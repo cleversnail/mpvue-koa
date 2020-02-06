@@ -20,6 +20,31 @@ async function indexAction(ctx) {
 }
 
 
+// 搜索时匹配搜索相关的内容
+async function helperAction(ctx) {
+  const keyword = ctx.query.keyword
+  var order = ctx.query.order
+  if (!order) {
+    order = ''
+    orderBy = 'id'
+  } else {
+    orderBy = 'retail_price'
+  }
+  const keywords = await mysql('nideshop_goods').orderBy(orderBy, order)
+  .column('id', 'name', 'list_pic_url', 'retail_price')
+  .where('name', 'like', '%' + keyword + '%').limit(10).select()
+  if (keywords) {
+    ctx.body = {
+      keywords
+    }
+  } else {
+    ctx.body = {
+      keywords: []
+    }
+  }
+}
+
+
 // 添加搜索历史
 async function addHistoryAction(ctx) {
   const {openId, keyword} = ctx.request.body
@@ -50,7 +75,27 @@ async function addHistoryAction(ctx) {
   }
 }
 
+// 清除历史记录
+async function clearHistoryAction(ctx) {
+  const openId = ctx.request.body.openId
+  // console.log(openId)
+  const data = await mysql('nideshop_search_history').where({
+    'user_id': openId
+  }).del()
+  if (data) {
+    ctx.body = {
+      'data': '清除成功'
+    }
+  } else {
+    ctx.body = {
+      'data': null
+    }
+  }
+}
+
 module.exports = {
   indexAction,
-  addHistoryAction
+  addHistoryAction,
+  clearHistoryAction,
+  helperAction
 }
