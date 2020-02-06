@@ -1,5 +1,6 @@
 {
   "pages": [
+    "pages/search/main",
     "pages/index/main",
     "pages/topic/main",
     "pages/category/main",
