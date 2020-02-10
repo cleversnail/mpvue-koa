@@ -13,4 +13,7 @@ router.post('/search/addhistoryaction', controllers.search.index.addHistoryActio
 router.post('/search/clearhistoryAction', controllers.search.index.clearHistoryAction) // 清除搜索历史
 router.get('/search/helperaction', controllers.search.index.helperAction) // 搜索提示
 
+// 商品详情
+router.get('/goods/detailaction', controllers.goods.index.detailAction)
+
 module.exports = router
