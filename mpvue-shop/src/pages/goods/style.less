@@ -204,4 +204,169 @@
       }
     }
   }
+  .common-problem{
+    margin-bottom: 110rpx;
+    .h{
+      padding: 35rpx 0;
+      background: #fff;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .title{
+        padding: 0 25rpx;
+        background: #fff;
+      }
+    }
+    .b{
+      padding: 0 30rpx;
+      background: #fff;
+      .item{
+        padding-bottom: 25rpx;
+        .question-box{
+          display: flex;
+          .spot{
+            width: 8rpx;
+            height: 8rpx;
+            background: #b4282d;
+            border-radius: 50%;
+            margin-top: 11rpx;
+          }
+          .question{
+            line-height: 30rpx;
+            padding-left: 8rpx;
+            display: block;
+            font-size: 26rpx;
+            padding-bottom: 15rpx;
+            color: #303030;
+          }
+        }
+        .answer{
+          line-height: 40rpx;
+          padding-left: 16rpx;
+          font-size: 26rpx;
+          color: #787878;
+        }
+      }
+    }
+    .sublist{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      width: 730rpx;
+      margin: 0 auto;
+      div{
+        width: 360rpx;
+        background: #fff;
+        margin-bottom: 10rpx;
+        padding-bottom: 10rpx;
+        img{
+          display: block;
+          width: 302rpx;
+          height: 302rpx;
+          margin: 0 auto;
+        }
+        p{
+          margin-bottom: 5rpx;
+          text-indent: 1em;
+        }
+        p:nth-child(2) {
+          overflow: hidden;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+          width: 98%;
+        }
+        p:nth-child(3) {
+          color: #9c3232;
+        } 
+      }
+    }
+  }
+  .bottom-fixed{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 750rpx;
+    height: 100rpx;
+    display: flex;
+    background: #fff;
+    z-index: 10;
+    .collect-box{
+      height: 100rpx;
+      width: 162rpx;
+      border: 1rpx solid #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .collect{
+        display: block;
+        height: 44rpx;
+        width: 44rpx;
+        background: url('../../../static/images/icon_collect.png') no-repeat;
+        background-size: 100% 100%;
+      }
+      .collect.active{
+        display: block;
+        height: 44rpx;
+        width: 44rpx;
+        background: url('../../../static/images/icon_collect_checked.png') no-repeat;
+        background-size: 100% 100%;
+      }
+    }
+    .car-box{
+      height: 100rpx;
+      width: 162rpx;
+      border: 1rpx solid #f4f4f4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      .car{
+        position: relative;
+        width: 60rpx;
+        height: 60rpx;
+        span{
+          position: absolute;
+          top: 0;
+          right: 0;
+          width: 28rpx;
+          height: 28rpx;
+          z-index: 10;
+          background: #b4282d;
+          text-align: center;
+          font-size: 18rpx;
+          color: #fff;
+          line-height: 28rpx;
+          border-radius: 50%;
+        }
+        img{
+          display: block;
+          height: 44rpx;
+          width: 44rpx;
+          position: absolute;
+          top: 10rpx;
+          left: 0;
+        }
+      }
+    }
+    div:nth-child(3) {
+      height: 100rpx;
+      line-height: 96rpx;
+      flex: 1;
+      text-align: center;
+      color: #333;
+      border-top: 1rpx solid #f4f4f4;
+      border-bottom: 1rpx solid #f4f4f4;
+    }
+    div:nth-child(4) {
+      height: 100rpx;
+      line-height: 96rpx;
+      flex: 1;
+      text-align: center;
+      color: #fff;
+      background: #b4282d;
+      border: 1rpx solid #b4282d;
+      float: left;
+    }
+  }
 }

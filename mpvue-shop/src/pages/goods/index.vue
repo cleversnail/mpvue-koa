@@ -46,6 +46,51 @@
       <wxParse :content="goods_desc" />
     </div>
 
+    <!-- 常见问题 -->
+    <div class="common-problem">
+      <div class="h">
+        <text class="title">常见问题</text>
+      </div>
+      <div class="b">
+        <div class="item" v-for="(item, index) in issueList" :key="index">
+          <div class="question-box">
+            <text class="spot"></text>
+            <text class="question">{{item.question}}</text>
+          </div>
+          <div class="answer">{{item.answer}}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 大家都在看 -->
+    <div class="common-problem">
+      <div class="h">
+        <text class="title">大家都在看</text>
+      </div>
+      <div class="sublist">
+        <div v-for="(subitem, index) in productList" :key="index">
+          <img :src="subitem.list_pic_url" alt="">
+          <p>{{subitem.name}}</p>
+          <p>¥{{subitem.retail_price}}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="bottom-fixed">
+      <div class="collect-box" @click="collect">
+        <div class="collect" :class="[collectFlag ? 'active' : '']"></div>
+      </div>
+      <div class="car-box" @click="toCart">
+        <div class="car" >
+          <span>{{allnumber}}</span>
+          <img src="/static/images/ic_menu_shoping_nor.png" alt="">
+        </div>
+      </div>
+      <div @click="buy">立即购买</div>
+      <div @click="addCart">加入购物车</div>
+    </div>
+
     <!-- 选择规格的弹出层 -->
     <div class="pop" v-show="showpop" @click="showType"></div>
     <div class="attr-pop" :class="[showpop ? 'fadeup' : 'fadedown']">
@@ -87,7 +132,13 @@ export default {
       showpop: false,
       number: 0,
       attribute: [],
-      goods_desc: ''
+      goods_desc: '',
+      issueList: [], // 常见问题
+      productList: [],
+      collectFlag: false,
+      goodsId: '',
+      allnumber: 0,
+      allPrice: ''
     }
   },
   components: {
@@ -117,6 +168,12 @@ export default {
       this.gallery = data.gallery
       this.attribute = data.attribute
       this.goods_desc = data.info.goods_desc
+      this.issueList = data.issue
+      this.productList = data.productList
+      this.goodsId = data.info.id
+      this.collectFlag = data.collected
+      this.allnumber = data.allnumber
+      this.allPrice = data.info.retail_price
     },
     showType () {
       this.showpop = !this.showpop
@@ -130,6 +187,48 @@ export default {
       } else {
         return false
       }
+    },
+    async collect () {
+      this.collectFlag = !this.collectFlag
+      const data = await post('/collect/addcollect', {
+        openId: this.openId,
+        goodsId: this.goodsId
+      })
+    },
+    toCart () {
+      wx.switchTab({
+        url: '/pages/cart/main'
+      });  
+    },
+    async buy () {
+      if (this.showpop) {
+        if (this.number === 0) {
+          wx.showToast({
+            title: '请选择商品数量',
+            duration: 2000,
+            icon: 'none',
+            mask: true,
+            success: res => {}
+          })
+          return false
+        }
+        const data = await post('/order/submitAction', {
+          goodsId: this.goodsId,
+          openId: this.openId,
+          allPrice: this.allPrice
+        })
+        if (data) {
+          wx.navigateTo({
+            url: '/pages/order/main'
+          });
+            
+        }
+      } else {
+        this.showpop = true
+      }
+    },
+    addCart () {
+      
     }
   }
 }
