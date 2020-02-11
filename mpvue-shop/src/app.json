@@ -1,6 +1,6 @@
 {
   "pages": [
-    "pages/goods/main",
+    "pages/order/main",
     "pages/index/main",
     "pages/search/main",
     "pages/topic/main",
@@ -11,7 +11,9 @@
     "pages/brandlist/main",
     "pages/newgoods/main",
     "pages/topicdetail/main",
-    "pages/order/main"
+    "pages/goods/main",
+    "pages/addaddress/main",
+    "pages/addressSelect/main"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -155,12 +155,14 @@ export default {
   },
   mounted () {
     this.openId = wx.getStorageSync('openId') || '';
+    this.id = this.$root.$mp.query.id
+    console.log(this.id)
     this.goodsDetail()
   },
   methods: {
     async goodsDetail () {
       const data = await get('/goods/detailaction', {
-        id: 1009024,
+        id: this.id,
         openId: this.openId
       })
       console.log(data)
@@ -227,8 +229,34 @@ export default {
         this.showpop = true
       }
     },
-    addCart () {
-      
+    async addCart () {
+      if (this.showpop) {
+        if (this.number == 0) {
+          wx.showToast({
+            title: '请选择商品数量',
+            duration: 2000,
+            icon: 'none',
+            mask: true,
+            success: res => {}
+          })
+          return false
+        }
+        const data = await post('cart/addCart', {
+          openId: this.openId,
+          goodsId: this.goodsId,
+          number: this.number
+        })
+        if (data) {
+          this.allnumber = this.allnumber + this.number
+          wx.showToast({
+            title: '添加购物车成功',
+            icon: 'success',
+            duration: 1500
+          })
+        }
+      } else {
+        this.showpop = true
+      }
     }
   }
 }
