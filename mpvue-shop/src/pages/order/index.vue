@@ -55,7 +55,7 @@
 
     <div class="bottom">
       <div>实付：¥ {{allprice}}</div>
-      <div class="pay">支付</div>
+      <div class="pay" @click="pay">支付</div>
     </div>
   </div>
 </template>
@@ -104,6 +104,15 @@ export default {
       }
       this.listData.map((item) => {
         this.allprice += item.retail_price * item.number
+      })
+    },
+    pay () {
+      wx.showToast({
+        title: '支付功能暂未开发',
+        icon: 'none',
+        duration: 1500,
+        mask: false,
+        success: res => {}
       })
     }
   }
