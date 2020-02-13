@@ -1,12 +1,12 @@
 {
   "pages": [
+    "pages/cart/main",
+    "pages/index/main",
     "pages/addressSelect/main",
     "pages/order/main",
-    "pages/index/main",
     "pages/search/main",
     "pages/topic/main",
     "pages/category/main",
-    "pages/cart/main",
     "pages/my/main",
     "pages/mappage/main",
     "pages/brandlist/main",
