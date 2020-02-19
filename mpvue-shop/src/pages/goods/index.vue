@@ -156,7 +156,7 @@ export default {
   mounted () {
     this.openId = wx.getStorageSync('openId') || '';
     this.id = this.$root.$mp.query.id
-    console.log(this.id)
+    console.log(this.id, '------')
     this.goodsDetail()
   },
   methods: {

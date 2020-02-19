@@ -49,7 +49,6 @@ async function detailAction (ctx) {
   const orderDetail = await mysql('nideshop_order').where({
     'user_id': openId
   }).select()
-  
   var goodsIds = orderDetail[0].goods_id.split(',')
 
   const list = await mysql('nideshop_cart').andWhere({
@@ -67,7 +66,6 @@ async function detailAction (ctx) {
       'user_id': openId
     }).orderBy('is_default', 'desc').select()
   }
-  
   ctx.body = {
     price: orderDetail[0].allprice,
     goodsList: list,

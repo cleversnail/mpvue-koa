@@ -1,11 +1,12 @@
 {
   "pages": [
-    "pages/cart/main",
+    "pages/topic/main",
     "pages/index/main",
+    "pages/categroylist/main",
+    "pages/cart/main",
     "pages/addressSelect/main",
     "pages/order/main",
     "pages/search/main",
-    "pages/topic/main",
     "pages/category/main",
     "pages/my/main",
     "pages/mappage/main",
@@ -19,7 +20,8 @@
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "网易严选",
-    "navigationBarTextStyle": "black"
+    "navigationBarTextStyle": "black",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#666",

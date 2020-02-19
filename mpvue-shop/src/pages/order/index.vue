@@ -103,7 +103,7 @@ export default {
         this.address = data.address
       }
       this.listData.map((item) => {
-        this.allprice += item.retail_price * item.number
+        this.allprice = Number(item.retail_price * item.number) + Number(this.allprice)
       })
     },
     pay () {
