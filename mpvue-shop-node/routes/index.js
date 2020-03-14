@@ -8,6 +8,8 @@ router.get('/index/index', controllers.home.index)
 
 // 分类相关的接口
 router.get('/category/categoryNav', controllers.category.index.categoryNav)
+router.get('/category/indexaction', controllers.category.index.indexAction)
+router.get('/category/currentaction', controllers.category.index.currentAction)
 
 
 // 搜索相关的接口
